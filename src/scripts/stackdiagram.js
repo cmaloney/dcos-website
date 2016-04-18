@@ -8,11 +8,20 @@
 
   let topElPos = -34;
   let btmElPos = 63;
-
-  if(!el.length) return;
+  let menuIsTriggered = false;
 
   $(window).on('scroll', function(e) {
-    if((window.scrollY||window.pageYOffset)+window.outerHeight >= el.offset().top+450 && !isTriggered) {
+    if((window.scrollY||window.pageYOffset) >= $('.container--dark-background').height()-100 && !menuIsTriggered) {
+      menuIsTriggered = true;
+      $('.container__menu').addClass('container__menu--fixed')
+      $('container__menu--bg').addClass('animate');
+    } else if((window.scrollY||window.pageYOffset) < $('.container--dark-background').height()-100 && menuIsTriggered) {
+      menuIsTriggered = false;
+      $('.container__menu').removeClass('container__menu--fixed');
+      $('container__menu--bg').removeClass('animate');
+    }
+
+    if(el.length && ((window.scrollY||window.pageYOffset)+window.outerHeight >= el.offset().top+450 && !isTriggered)) {
       isTriggered = true;
 
       topEl.addClass('animate');

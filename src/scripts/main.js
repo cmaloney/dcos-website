@@ -16,7 +16,7 @@ $('#nav-icon').on('click', function (e) {
     $('body').attr('style', 'overflow: hidden;');
     $('html').attr('style', 'overflow: hidden;');
   }
-})
+});
 
 // Array.find polyfill
 if (!Array.prototype.find) {
